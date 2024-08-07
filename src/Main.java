@@ -5,21 +5,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("ENTER THE BASE ");
-        int base = input.nextInt();
-        System.out.println("ENTER THE EXPONENT ");
-        int exponent=input.nextInt();
-        int res = Power(base, exponent);
-        System.out.println("THE ANSWER IS "+(res));
-
-
+        System.out.println("ENTER THE STRING TO REVERSE ");
+        String s = input.nextLine();
+        int lenght=s.length();
+        System.out.println("THE REVERSED STRING IS :  "+(Reverse(s,lenght)));
 
     }
-    public static int Power(int b , int e){
-        if (e==1){
-            return b;
+    public static String Reverse(String s , int lenght){
+        if (lenght==0){
+            return "";
         }
-        return b * Power(b,e-1);
+        return s.charAt(lenght-1)+Reverse(s,lenght-1);
 
 
     }
