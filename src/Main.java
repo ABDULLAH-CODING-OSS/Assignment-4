@@ -4,19 +4,23 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-   Scanner input = new Scanner(System.in);
-        System.out.println("ENTER THE NUMBER OF Men ");
-        int hs=input.nextInt();
-        int res = handSShake(hs);
-        System.out.println("TOTAL HANDSHAKES BY "+(hs)+" Mens are "+(res));
+        Scanner input = new Scanner(System.in);
+        System.out.println("ENTER THE FIRST VALUE");
+int x = input.nextInt();
+        System.out.println("ENTER THE SECOND VALUE");
+int y= input.nextInt();
+int res = GCD(x,y);
+        System.out.println("THE GCD OF THESE NUMBERS ARE "+(res));
 
 
+
+
+    }
+    public static int GCD(int x , int y){
+     if (y==0){
+         return x;
      }
-     public static int handSShake(int n){
-        if (n<=1){
-            return 0;
-        }
-        return handSShake(n-1)+(n-1);
-     }
+      return GCD(y,x%y);
 
+    }
 }
