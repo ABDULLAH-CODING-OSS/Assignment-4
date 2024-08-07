@@ -4,38 +4,23 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-    Scanner input = new Scanner(System.in);
-        System.out.println("ENTER THE WORD OR NUMBER TO BE CHECKED");
-    String palindrome = input.nextLine();
-    String cleanPalindrome = cleanString(palindrome);
-    if (Palindrome(cleanPalindrome,0,cleanPalindrome.length()-1)){
-        System.out.println("YOUR NUMBER/WORD IS PALINDROME ");
-    }
-    else {
-        System.out.println("NOT A PALINDROME");
-    }
+   Scanner input = new Scanner(System.in);
+        System.out.println("ENTER YOUR NUMBER  ");
+         int number = input.nextInt();
+        System.out.println("ENTER THE NUMBER TO BE SEARCHED");
+         int searchNumber=input.nextInt();
+        int result = Count(number,searchNumber);
+        System.out.println("The number "+(searchNumber)+" appears "+(result)+" Times");
 
-
-
-    }
-    public static String cleanString(String s) {
-        StringBuilder cleaned = new StringBuilder();
-        for (char ch : s.toCharArray()) {
-            if (Character.isLetterOrDigit(ch)) {
-                cleaned.append(Character.toLowerCase(ch));
-            }
+     }
+     public static int Count(int number ,int digit){
+        if (number==0){
+           return  (digit==0)?1:0;
         }
-        return cleaned.toString();
-    }
+        int lastDigit = number%10;
+        int count = (lastDigit==digit)?1:0;
+        return count + Count(number/10,digit);
 
-     public static Boolean Palindrome(String palindrome, int i,int j){
-        if (  palindrome.charAt(i)!=palindrome.charAt(j)){
-            return false;
-         }
-         if(i>=j){
-             return true;
-         }
-         return Palindrome(palindrome, i+1,j-1);
 
 
 
