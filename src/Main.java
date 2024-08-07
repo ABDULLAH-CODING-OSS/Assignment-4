@@ -4,22 +4,41 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("ENTER THE NUMBER WHOSE FACTORIAL IS NEEDED");
-        int number = input.nextInt();
-        int res = Factorial(number);
-        System.out.println("FACTORIAL IS : "+(res));
+    Scanner input = new Scanner(System.in);
+        System.out.println("ENTER THE WORD OR NUMBER TO BE CHECKED");
+    String palindrome = input.nextLine();
+    String cleanPalindrome = cleanString(palindrome);
+    if (Palindrome(cleanPalindrome,0,cleanPalindrome.length()-1)){
+        System.out.println("YOUR NUMBER/WORD IS PALINDROME ");
+    }
+    else {
+        System.out.println("NOT A PALINDROME");
+    }
 
 
 
     }
-    public static int Factorial(int number){
-        if (number==0 || number==1){
-            return 1;
+    public static String cleanString(String s) {
+        StringBuilder cleaned = new StringBuilder();
+        for (char ch : s.toCharArray()) {
+            if (Character.isLetterOrDigit(ch)) {
+                cleaned.append(Character.toLowerCase(ch));
+            }
         }
-        else {
-            return number*Factorial(number-1);
-        }
-
+        return cleaned.toString();
     }
+
+     public static Boolean Palindrome(String palindrome, int i,int j){
+        if (  palindrome.charAt(i)!=palindrome.charAt(j)){
+            return false;
+         }
+         if(i>=j){
+             return true;
+         }
+         return Palindrome(palindrome, i+1,j-1);
+
+
+
+     }
+
 }
